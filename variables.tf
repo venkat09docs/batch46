@@ -25,11 +25,23 @@ variable "instance_tags" {
   }
 }
 
-variable "sg_ports" {
-  default = [0, 22, 80]
+variable "sg_ports_ingress" {
+  default = [22, 80]
   type    = list(any)
+}
+
+variable "egress_port" {
+    default = 0
 }
 
 variable "sg_cidr" {
   default = "0.0.0.0/0"
+}
+
+output "public_ip_address" {
+    value = aws_instance.demo.public_ip
+}
+
+output "webserver_status" {
+    value = aws_instance.demo.instance_state
 }
