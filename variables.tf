@@ -3,11 +3,6 @@ variable "region" {
   type    = string
 }
 
-variable "ami_id" {
-  default = "ami-025b4b7b37b743227"
-  type    = string
-}
-
 variable "instance_type" {
   default = "t2.micro"
 }
@@ -36,6 +31,11 @@ variable "egress_port" {
 
 variable "sg_cidr" {
   default = "0.0.0.0/0"
+}
+
+variable "environments"{
+    type = list
+    default = ["dev", "staging", "prod"]
 }
 
 output "public_ip_address" {

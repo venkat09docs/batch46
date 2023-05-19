@@ -33,5 +33,23 @@
   TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
 
   EC2_AVAIL_ZONE=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/placement/availability-zone)
-  
+
   echo "<h1>Hello World from $(hostname -f) in AZ $EC2_AVAIL_ZONE </h1>" > /var/www/html/index.html
+
+Defining Variables:
+    - VAR_NAME=VAR_VALUE
+
+Concepts:
+- provider
+- resource
+- variable
+- output
+- locals
+- provisioner
+  - "local-exec"
+  - "remote-exec"
+  - "file"
+    - Copy the index.html to the ec2 webserver '/tmp'
+- dynamic
+- data
+- count
